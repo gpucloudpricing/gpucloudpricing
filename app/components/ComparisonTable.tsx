@@ -14,7 +14,10 @@ const ComparisonTable: React.FC<ComparisonTableProps> = ({ providerData }) => {
   const [selectedGPU, setSelectedGPU] = useState<string>("General Info")
   const [columnWidths, setColumnWidths] = useState<{ [key: string]: number }>({
     "Provider Name": 100,
-    "Pricing Source": 100
+    "Pricing Source": 150，
+    "Monthly Visits": 100，
+    "Fundings": 210，
+    "Promotions": 210
   })
   const [resizingColumn, setResizingColumn] = useState<string | null>(null)
 
@@ -27,17 +30,17 @@ const ComparisonTable: React.FC<ComparisonTableProps> = ({ providerData }) => {
   const getColumnVisibility = useCallback((column: string) => {
     switch (selectedGPU) {
       case 'General Info':
-        return ["Provider Name", "Provider Type", "Monthly Visits", "Trustpilot Rating", "Fundings"].includes(column)
+        return ["Provider Name", "Provider Type", "Pricing Source","Monthly Visits", "Trustpilot Rating", "Fundings"].includes(column)
       case 'Feature Comparison':
         return ["Provider Name", "Regions", "Bare Metal Support", "Container Support", "preConfigured Container Image", "Serverless Support", "Model APIs (vendor hosted opensouce models)", "Model APIs: LLM playground; Image playground", "Batch jobs", "Other Features"].includes(column)
       case '4090':
-        return ["Provider Name", "Pricing Source", "Promotions", "4090 On-Demand", "4090 Monthly", "4090 Serverless", "Storage"].includes(column)
+        return ["Provider Name", "Promotions", "4090 On-Demand", "4090 Monthly", "4090 Serverless", "Storage"].includes(column)
       case 'RTX 6000':
-        return ["Provider Name", "Pricing Source", "Promotions", "RTX 6000 Ada, On-Demand", "RTX 6000 Ada, Monthly", "RTX 6000 Ada, Serverless", "Storage"].includes(column)
+        return ["Provider Name", "Promotions", "RTX 6000 Ada, On-Demand", "RTX 6000 Ada, Monthly", "RTX 6000 Ada, Serverless", "Storage"].includes(column)
       case 'A100':
-        return ["Provider Name", "Pricing Source", "Promotions", "A100 SXM4, On-Demand", "A100 SXM4, Monthly", "A100 SXM4, Serverless", "Storage"].includes(column)
+        return ["Provider Name", "Promotions", "A100 SXM4, On-Demand", "A100 SXM4, Monthly", "A100 SXM4, Serverless", "Storage"].includes(column)
       case 'H100':
-        return ["Provider Name", "Pricing Source", "Promotions", "H100 SXM, On-Demand", "H100 SXM, Monthly", "H100 SXM, Serverless", "Storage"].includes(column)
+        return ["Provider Name", "Promotions", "H100 SXM, On-Demand", "H100 SXM, Monthly", "H100 SXM, Serverless", "Storage"].includes(column)
       default:
         return true
     }
