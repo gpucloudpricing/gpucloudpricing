@@ -25,7 +25,7 @@ const ComparisonTable: React.FC<ComparisonTableProps> = ({ providerData }) => {
     if (value) setSelectedGPU(value)
   }
 
-  const gpuTypes = ["General Info", "Feature Comparison", "4090", "RTX 6000", "A100", "H100"]
+  const gpuTypes = ["General Info", "Feature Comparison", "4090 Price", "RTX 6000 Price", "A100 Price", "H100 Price"]
 
   const getColumnVisibility = useCallback((column: string) => {
     switch (selectedGPU) {
@@ -33,13 +33,13 @@ const ComparisonTable: React.FC<ComparisonTableProps> = ({ providerData }) => {
         return ["Provider Name", "Provider Type", "Pricing Source","Monthly Visits", "Trustpilot Rating", "Fundings"].includes(column)
       case 'Feature Comparison':
         return ["Provider Name", "Regions", "Bare Metal Support", "Container Support", "preConfigured Container Image", "Serverless Support", "Model APIs (vendor hosted opensouce models)", "Model APIs: LLM playground; Image playground", "Batch jobs", "Other Features"].includes(column)
-      case '4090':
+      case '4090 Price':
         return ["Provider Name", "Promotions", "4090 On-Demand", "4090 Monthly", "4090 Serverless", "Storage"].includes(column)
-      case 'RTX 6000':
+      case 'RTX 6000 Price':
         return ["Provider Name", "Promotions", "RTX 6000 Ada, On-Demand", "RTX 6000 Ada, Monthly", "RTX 6000 Ada, Serverless", "Storage"].includes(column)
-      case 'A100':
+      case 'A100 Price':
         return ["Provider Name", "Promotions", "A100 SXM4, On-Demand", "A100 SXM4, Monthly", "A100 SXM4, Serverless", "Storage"].includes(column)
-      case 'H100':
+      case 'H100 Price':
         return ["Provider Name", "Promotions", "H100 SXM, On-Demand", "H100 SXM, Monthly", "H100 SXM, Serverless", "Storage"].includes(column)
       default:
         return true
@@ -117,8 +117,8 @@ const ComparisonTable: React.FC<ComparisonTableProps> = ({ providerData }) => {
           <p className={`text-sm text-gray-600 mb-4 ${selectedGPU === "Feature Comparison" ? "" : "sr-only"}`}>
             Unlike the established CPU cloud market, GPU cloud providers vary greatly in what they offer. Understanding their features and knowing how your AI applications will use GPU resources is essential.
           </p>
-          <h3 className={`text-xl font-semibold mb-4 ${["4090", "RTX 6000", "A100", "H100"].includes(selectedGPU) ? "" : "sr-only"}`}>Pricing Comparison</h3>
-          <p className={`text-sm text-gray-600 mb-4 ${["4090", "RTX 6000", "A100", "H100"].includes(selectedGPU) ? "" : "sr-only"}`}>
+          <h3 className={`text-xl font-semibold mb-4 ${["4090 Price", "RTX 6000 Price", "A100 Price", "H100 Price"].includes(selectedGPU) ? "" : "sr-only"}`}>Pricing Comparison</h3>
+          <p className={`text-sm text-gray-600 mb-4 ${["4090 Price", "RTX 6000 Price", "A100 Price", "H100 Price"].includes(selectedGPU) ? "" : "sr-only"}`}>
             Which provider is truly the cheapest? Compare the pricing of commonly used GPU models on an apples-to-apples basis with identical specifications.
           </p>
           <div className="mb-6 flex justify-center">
@@ -130,11 +130,7 @@ const ComparisonTable: React.FC<ComparisonTableProps> = ({ providerData }) => {
               ))}
               {gpuTypes.slice(2).map((gpu) => (
                 <h4 key={gpu} className="m-0 p-0">
-                  <ToggleGroupItem 
-                    value={gpu} 
-                    aria-label={`${gpu} Price`}
-                    className="px-4 py-2 rounded-full text-sm"
-                  >
+                  <ToggleGroupItem value={gpu} aria-label={`Toggle ${gpu}`} className="px-4 py-2 rounded-full text-sm">
                     <span className="inline font-normal text-sm">{gpu}</span>
                   </ToggleGroupItem>
                 </h4>
@@ -202,4 +198,3 @@ const ComparisonTable: React.FC<ComparisonTableProps> = ({ providerData }) => {
 }
 
 export default ComparisonTable
-
