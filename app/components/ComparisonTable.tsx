@@ -14,9 +14,9 @@ const ComparisonTable: React.FC<ComparisonTableProps> = ({ providerData }) => {
   const [selectedGPU, setSelectedGPU] = useState<string>("General Info")
   const [columnWidths, setColumnWidths] = useState<{ [key: string]: number }>({
     "Provider Name": 100,
-    "Pricing Source": 150，
-    "Monthly Visits": 100，
-    "Fundings": 210，
+    "Pricing Source": 150,
+    "Monthly Visits": 100,
+    "Fundings": 210,
     "Promotions": 210
   })
   const [resizingColumn, setResizingColumn] = useState<string | null>(null)
@@ -130,7 +130,11 @@ const ComparisonTable: React.FC<ComparisonTableProps> = ({ providerData }) => {
               ))}
               {gpuTypes.slice(2).map((gpu) => (
                 <h4 key={gpu} className="m-0 p-0">
-                  <ToggleGroupItem value={gpu} aria-label={`Toggle ${gpu}`} className="px-4 py-2 rounded-full text-sm">
+                  <ToggleGroupItem 
+                    value={gpu} 
+                    aria-label={`${gpu} Price`}
+                    className="px-4 py-2 rounded-full text-sm"
+                  >
                     <span className="inline font-normal text-sm">{gpu}</span>
                   </ToggleGroupItem>
                 </h4>
@@ -190,7 +194,7 @@ const ComparisonTable: React.FC<ComparisonTableProps> = ({ providerData }) => {
           </div>
         </div>
         <p className="mt-6 text-sm text-gray-500 italic text-center">
-          GPU Cloud Provider Information – last updated on December 12, 2024
+          GPU Cloud Provider Information – last updated on December 22, 2024
         </p>
       </div>
     </section>
